@@ -18,7 +18,7 @@ function UserDataPage() {
   const userdata = data;
   console.log(data);
   return (
-    <div className="ml-5 grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="ml-5 grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 md:mr-7 mr-7">
       {userdata && userdata.map((item) => <Card key={item.id} {...item} />)}
     </div>
   );
