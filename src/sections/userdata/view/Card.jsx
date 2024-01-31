@@ -11,9 +11,9 @@ Card.propTypes = {
 
 function Card({ first_name, last_name, username, email, avatar }) {
   return (
-    <div className="p-7 bg-white border border-gray-200 rounded-lg shadow dark:bg-white flex flex-col items-center space-y-36 md:max-w-[22rem] sm:space-y-28 max-w-[22rem]">
+    <div className="p-7 bg-white border border-gray-200 rounded-lg shadow dark:bg-white flex flex-col items-center space-y-36 max-w-[16rem] sm:space-y-24">
       <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src={avatar} alt="" />
-      <div className="flex flex-col items-center space-y-3">
+      <div className="flex flex-col items-center space-y-2">
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-900">
           {first_name} {last_name}
         </h5>
