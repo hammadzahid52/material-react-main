@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import Table from './Table';
+// import Table from './Table';
 
 function DetailInfoTable() {
   const { isPending, error, data } = useQuery({
