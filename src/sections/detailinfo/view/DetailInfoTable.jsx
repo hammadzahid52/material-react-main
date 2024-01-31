@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-// import Table from './Table';
 
 function DetailInfoTable() {
   const { isPending, error, data } = useQuery({
@@ -9,15 +8,17 @@ function DetailInfoTable() {
     staleTime: Infinity,
     cacheTime: Infinity,
   });
+
   if (isPending) return 'Loading...';
-  if (error) return `An error has occurred:  + ${error.message}`;
+  if (error) return `An error has occurred: ${error.message}`;
+
   console.log(data);
   const info = data;
+
   return (
     <div>
-      <div></div>
       <div className="max-w-6xl bg-white rounded-6xl mx-auto">
-        {/* ------------------------SearchBar-------------------------------- */}
+        {/* SearchBar */}
         <div className="bg-white flex items-center justify-between p-6 dark:border-neutral-700">
           <div>
             <label
@@ -53,7 +54,8 @@ function DetailInfoTable() {
             </div>
           </div>
         </div>
-        {/* ------------------------SearchBar-------------------------------- */}
+        {/* End of SearchBar */}
+
         <div className="flex flex-col overflow-x-auto">
           <div className="sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -87,19 +89,24 @@ function DetailInfoTable() {
                       </th>
                     </tr>
                   </thead>
-                  {info &&
-                    info.map((item) => (
-                      <tr className="border-b transition duration-150 ease-in-out hover:bg-neutral-100">
-                        <td className="whitespace-nowrap px-6 py-4 font-medium">{item.id}</td>
-                        <td className="whitespace-nowrap px-6 py-4 font-semibold">{item.name}</td>
-                        <td className="whitespace-nowrap px-6 py-4">{item.username}</td>
-                        <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
-                        <td className="whitespace-nowrap px-6 py-4">{item.address.street}</td>
-                        <td className="whitespace-nowrap px-6 py-4">{item.phone}</td>
-                        <td className="whitespace-nowrap px-6 py-4">{item.website}</td>
-                        <td className="whitespace-nowrap px-6 py-4">{item.company.name}</td>
-                      </tr>
-                    ))}
+                  <tbody>
+                    {info &&
+                      info.map((item) => (
+                        <tr
+                          key={item.id}
+                          className="border-b transition duration-150 ease-in-out hover:bg-neutral-100"
+                        >
+                          <td className="whitespace-nowrap px-6 py-4 font-medium">{item.id}</td>
+                          <td className="whitespace-nowrap px-6 py-4 font-semibold">{item.name}</td>
+                          <td className="whitespace-nowrap px-6 py-4">{item.username}</td>
+                          <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
+                          <td className="whitespace-nowrap px-6 py-4">{item.address.street}</td>
+                          <td className="whitespace-nowrap px-6 py-4">{item.phone}</td>
+                          <td className="whitespace-nowrap px-6 py-4">{item.website}</td>
+                          <td className="whitespace-nowrap px-6 py-4">{item.company.name}</td>
+                        </tr>
+                      ))}
+                  </tbody>
                 </table>
               </div>
             </div>
