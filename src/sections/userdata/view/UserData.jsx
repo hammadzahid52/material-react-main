@@ -16,7 +16,7 @@ function UserDataPage() {
   if (isPending) return 'Loading...';
   if (error) return `An error has occurred:  + ${error.message}`;
   const userdata = data;
-  console.log(data);
+  // console.log(data);
   return (
     <div className="grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 mx-auto">
       {userdata && userdata.map((item) => <Card key={item.id} {...item} />)}

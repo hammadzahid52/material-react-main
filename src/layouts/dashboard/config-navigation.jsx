@@ -38,6 +38,11 @@ const navConfig = [
     icon: icon('ic_database'),
   },
   {
+    title: 'Detail Info',
+    path: '/detailinfopage',
+    icon: icon('ic_database'),
+  },
+  {
     title: 'Not found',
     path: '/404',
     icon: icon('ic_disabled'),
