@@ -1,7 +1,9 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
 function DetailInfoTable() {
+  const [row, setRow] = useState(false);
   const { isPending, error, data } = useQuery({
     queryKey: ['userData'],
     queryFn: () => fetch('https://jsonplaceholder.typicode.com/users').then((res) => res.json()),
@@ -12,14 +14,23 @@ function DetailInfoTable() {
   if (isPending) return 'Loading...';
   if (error) return `An error has occurred: ${error.message}`;
 
-  console.log(data);
+  // console.log(data);
   const info = data;
-
+  const toggle = () => {
+    setRow(!row);
+  };
+  const handlerow = (...text) => {
+    const combinetext = text.join(' ');
+    if (combinetext.length > 20) {
+      return row ? combinetext : `${combinetext.slice(0, 20)} see more...`;
+    }
+    return combinetext;
+  };
   return (
     <div>
       <div className="max-w-6xl bg-white rounded-6xl mx-auto">
         {/* SearchBar */}
-        {/* <div className="bg-white flex items-center justify-between p-6 dark:border-neutral-700">
+        <div className="bg-white flex items-center justify-between p-6 dark:border-neutral-700">
           <label
             htmlFor="searchinput"
             className="text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -51,14 +62,14 @@ function DetailInfoTable() {
               placeholder="Search User"
             />
           </div>
-        </div> */}
+        </div>
         {/* End of SearchBar */}
 
         <div className="flex flex-col overflow-x-auto">
           <div className="sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
               <div className="overflow-x-auto">
-                <table className="min-w-full text-left text-sm font-light">
+                <table className="table-auto min-w-full text-left text-sm font-light">
                   <thead className="border-b font-medium dark:border-neutral-500 bg-neutral-100">
                     <tr>
                       <th scope="col" className="px-6 py-4">
@@ -98,10 +109,22 @@ function DetailInfoTable() {
                           <td className="whitespace-nowrap px-6 py-4 font-semibold">{item.name}</td>
                           <td className="whitespace-nowrap px-6 py-4">{item.username}</td>
                           <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
-                          <td className="whitespace-nowrap px-6 py-4">{item.address.street}</td>
+                          <td className="whitespace-nowrap px-6 py-4">
+                            {item.address?.street},{item.address?.suite}, {item.address?.city},{' '}
+                            {item.address.zipcode}
+                          </td>
                           <td className="whitespace-nowrap px-6 py-4">{item.phone}</td>
                           <td className="whitespace-nowrap px-6 py-4">{item.website}</td>
-                          <td className="whitespace-nowrap px-6 py-4">{item.company.name}</td>
+                          <td
+                            className="whitespace-nowrap px-6 py-4 overflow-hidden"
+                            onClick={() => toggle()}
+                          >
+                            {handlerow(
+                              item.company?.name,
+                              item.company?.catchPhrase,
+                              item.company?.bs
+                            )}
+                          </td>
                         </tr>
                       ))}
                   </tbody>
