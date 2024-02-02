@@ -4,9 +4,6 @@ import { MdFilterList } from 'react-icons/md';
 import DataTable from 'react-data-table-component';
 import { AiFillDelete } from 'react-icons/ai';
 
-// import ExpandedComponent from 'react-data-table-component';
-// import { max } from 'lodash';
-
 function Table() {
   const [searchQuery, setSearchQuery] = useState('');
   const [length, setLength] = useState(0);
@@ -19,7 +16,7 @@ function Table() {
   });
   if (isPending) return 'Loading...';
   if (error) return `An error has occurred: ${error.message}`;
-  //   console.log(data);
+
   const filteredData = data.filter(
     (item) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -31,16 +28,11 @@ function Table() {
     setSearchQuery(e.target.value);
   };
   const columns = [
-    // {
-    //   name: 'ID',
-    //   selector: (row) => row.id,
-    //   sortable: true,
-    // },
     {
       name: 'Name',
       selector: (row) => row.name,
       style: {
-        fontWeight: '530', //chnaging font weight
+        fontWeight: '530',
       },
       sortable: true,
     },
@@ -85,9 +77,9 @@ function Table() {
     rows: {
       style: {
         minHeight: '70px',
-        // fontWeight: '800',
+        //   fontWeight: '800',
         hover: {
-          backgroundColor: 'lightgray', // Set the desired background color on hover
+          backgroundColor: 'lightgray',
         },
       },
     },
@@ -97,24 +89,24 @@ function Table() {
         paddingLeft: '2px',
         paddingRight: '8px',
         backgroundColor: '#F4F6F8',
-        fontFamily: 'inherit', // Example font family
+        fontFamily: 'inherit',
         fontSize: '14px',
       },
     },
     cells: {
       style: {
-        paddingLeft: '1px', // override the cell padding for data cells
+        paddingLeft: '1px',
         paddingRight: '8px',
-        fontFamily: 'inherit', // Example font family
+        fontFamily: 'inherit',
         fontSize: '14px',
       },
     },
     selectableRowSelected: {
       backgroundColor: 'red',
-      color: 'red', // Text color for checked rows
+      color: 'red',
     },
     selectableRowUnchecked: {
-      backgroundColor: 'transparent', // Background color for unchecked rows
+      backgroundColor: 'transparent',
     },
   };
   const paginationComponentOptions = {
@@ -125,7 +117,7 @@ function Table() {
   };
   const handleSelected = ({ selectedRows }) => {
     setLength(selectedRows.length);
-    setDeleted(selectedRows.length > 0); // Set deleted to true if there are selected rows, false otherwise
+    setDeleted(selectedRows.length > 0);
   };
 
   return (
@@ -134,7 +126,10 @@ function Table() {
         <div>
           <h1 className="font-bold text-xl md:text-2xl">User Information</h1>
         </div>
-        <button className="font-semibold text-white px-6 py-[0.40rem] rounded-md bg-[#212B36]">
+        <button
+          type="button"
+          className="font-semibold text-white px-6 py-[0.40rem] rounded-md bg-[#212B36]"
+        >
           New User
         </button>
       </div>
@@ -191,10 +186,6 @@ function Table() {
               </div>
             </div>
           )}
-
-          {/* Deleted */}
-
-          {/* Searchbar */}
 
           <DataTable
             columns={columns}
