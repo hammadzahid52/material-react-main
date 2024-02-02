@@ -101,13 +101,6 @@ function Table() {
         fontSize: '14px',
       },
     },
-    selectableRowSelected: {
-      backgroundColor: 'red',
-      color: 'red',
-    },
-    selectableRowUnchecked: {
-      backgroundColor: 'transparent',
-    },
   };
   const paginationComponentOptions = {
     rowsPerPageText: 'Rows Per Page',
@@ -193,6 +186,7 @@ function Table() {
             paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
             paginationIconFirstPage={null}
             paginationIconLastPage={null}
+            highlightOnHover
           />
         </div>
       </div>
