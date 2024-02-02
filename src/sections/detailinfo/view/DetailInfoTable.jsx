@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+
 import Table from '../Table';
 
 function DetailInfoTable() {

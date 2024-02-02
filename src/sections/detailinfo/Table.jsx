@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { MdFilterList } from 'react-icons/md';
-import DataTable from 'react-data-table-component';
 import { AiFillDelete } from 'react-icons/ai';
+import { useQuery } from '@tanstack/react-query';
+import DataTable from 'react-data-table-component';
 
 function Table() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -122,7 +122,7 @@ function Table() {
 
   return (
     <div>
-      <div className="flex mx-auto justify-between max-w-[74rem] mb-12">
+      <div className="flex mx-2 md:mx-3 lg:mx-3 xl:mx-auto justify-between max-w-[74rem] mb-12">
         <div>
           <h1 className="font-bold text-xl md:text-2xl">User Information</h1>
         </div>
@@ -147,12 +147,6 @@ function Table() {
             <div className="bg-white py-5 rounded-t-2xl">
               <div className="flex justify-between mx-3 md:mx-9 lg:mx-9">
                 <div className="max-w-[16rem] flex justify-center align-center items-center">
-                  <label
-                    htmlFor="default-search"
-                    className=" text-sm font-medium text-gray-900 sr-only dark:text-white "
-                  >
-                    Search
-                  </label>
                   <div className="relative ">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                       <svg
@@ -173,7 +167,7 @@ function Table() {
                     </div>
                     <input
                       type="search"
-                      id="default-search"
+                      id="defaultsearch"
                       className="bg-white block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg hover:border-black focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search Users"
                       onChange={handlefilter}
