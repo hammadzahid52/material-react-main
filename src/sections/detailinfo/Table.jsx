@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MdFilterList } from 'react-icons/md';
 import { AiFillDelete } from 'react-icons/ai';
+import { LuPlus } from 'react-icons/lu';
 import { useQuery } from '@tanstack/react-query';
 import DataTable from 'react-data-table-component';
 
@@ -121,7 +122,7 @@ function Table() {
         </div>
         <button
           type="button"
-          className="font-semibold text-white px-6 py-[0.40rem] rounded-md bg-[#212B36]"
+          className="font-semibold flex justify-center items-center text-white px-6 py-[0.40rem] rounded-md bg-[#212B36]"
         >
           New User
         </button>
@@ -140,32 +141,34 @@ function Table() {
             <div className="bg-white py-5 rounded-t-2xl">
               <div className="flex justify-between mx-3 md:mx-9 lg:mx-9">
                 <div className="max-w-[16rem] flex justify-center align-center items-center">
-                  <div className="relative ">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg
-                        className="w-4 h-4 text-gray-400 dark:text-gray-400"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                        />
-                      </svg>
+                  <form action="">
+                    <div className="relative ">
+                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg
+                          className="w-4 h-4 text-gray-400 dark:text-gray-400"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                          />
+                        </svg>
+                      </div>
+                      <input
+                        type="search"
+                        id="defaultsearch"
+                        className="bg-white block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg hover:border-black focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search Users"
+                        onChange={handlefilter}
+                      />
                     </div>
-                    <input
-                      type="search"
-                      id="defaultsearch"
-                      className="bg-white block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg hover:border-black focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search Users"
-                      onChange={handlefilter}
-                    />
-                  </div>
+                  </form>
                 </div>
                 <div>
                   <MdFilterList className="text-black text-2xl flex justify-center mt-2" />
