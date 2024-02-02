@@ -78,7 +78,6 @@ function Table() {
     rows: {
       style: {
         minHeight: '70px',
-        //   fontWeight: '800',
         hover: {
           backgroundColor: 'lightgray',
         },
